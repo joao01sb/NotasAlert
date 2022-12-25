@@ -12,28 +12,46 @@
 
         <TextView
             android:id="@+id/nome_tarefa"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_margin="4dp"
             android:text="@string/nomedatarefa"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/icone_vencimento"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TextContrastCheck" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/descricao_tarefa"
-            android:layout_width="match_parent"
+            android:id="@+id/descricaoDaTarefa"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/descricao_da_terefa"
-            app:layout_constraintTop_toBottomOf="nome_tarefa"
+            android:layout_margin="4dp"
+            android:text="@string/descricao_da_tarefa"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/icone_vencimento"
+            app:layout_constraintTop_toBottomOf="@+id/nome_tarefa" />
+
+        <TextView
+            android:id="@+id/dataVencimentoDaTarefa"
+            android:layout_width="0dp"
+            android:layout_margin="4dp"
+            android:layout_height="wrap_content"
+            android:text="@string/dataLimiteDaTarefa"
+            app:layout_constraintTop_toBottomOf="@+id/descricaoDaTarefa"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/icone_vencimento"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="descricao_tarefa" />
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_baseline_access_time_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

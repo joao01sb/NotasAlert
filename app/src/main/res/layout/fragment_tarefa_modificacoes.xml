@@ -1,14 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentTarefaModificacoes">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragment.FragmentTarefaModificacoes">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nome_da_tarefa_campo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:hint="Nome da tarefa"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nome_da_tarefa_valor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/descricao_da_tarefa_campo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome da tarefa"
+        android:layout_margin="8dp"
+        android:gravity="top"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nome_da_tarefa_campo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/descricao_da_tarefa_valor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/data_da_tarefa_campo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome da tarefa"
+        android:layout_margin="8dp"
+        android:gravity="top"
+        android:importantForAutofill="no"
+        android:inputType="datetime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descricao_da_tarefa_campo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/data_da_tarefa_valor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="Salvar"
+        android:layout_margin="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+<!--    <EditText-->
+<!--        android:id="@+id/activity_formulario_noticia_texto"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:gravity="top"-->
+<!--        android:hint="Digite a descvricao"-->
+<!--        android:importantForAutofill="no"-->
+<!--        android:inputType="textMultiLine"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/activity_formulario_noticia_titulo"-->
+<!--        app:layout_constraintStart_toStartOf="@id/activity_formulario_noticia_titulo"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/activity_formulario_noticia_titulo"-->
+<!--        tools:ignore="UnusedAttribute" />-->
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

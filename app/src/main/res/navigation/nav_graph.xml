@@ -8,10 +8,19 @@
         android:id="@+id/fragmentListaTarefas"
         android:name="com.joao01sb.tarefas.FragmentListaTarefas"
         android:label="fragment_lista_tarefas"
-        tools:layout="@layout/fragment_lista_tarefas" />
+        tools:layout="@layout/fragment_lista_tarefas" >
+        <action
+            android:id="@+id/action_tarefas_para_tarefa"
+            app:destination="@id/fragmentTarefaModificacoes"
+            app:popUpTo="@id/nav_graph" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentTarefaModificacoes"
         android:name="com.joao01sb.tarefas.FragmentTarefaModificacoes"
         android:label="fragment_tarefa_modificacoes"
-        tools:layout="@layout/fragment_tarefa_modificacoes" />
+        tools:layout="@layout/fragment_tarefa_modificacoes" >
+        <action
+            android:id="@+id/action_tarefa_para_tarefas"
+            app:destination="@id/fragmentListaTarefas" />
+    </fragment>
 </navigation>
