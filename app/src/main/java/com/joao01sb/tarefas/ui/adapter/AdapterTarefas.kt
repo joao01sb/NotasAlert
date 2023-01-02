@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.joao01sb.tarefas.databinding.TarefaItemBinding
 import com.joao01sb.tarefas.model.Tarefa
+import java.util.Date
 
 class AdapterTarefas(
     private val tarefas: List<Tarefa> = emptyList(),
@@ -15,7 +16,9 @@ class AdapterTarefas(
         private val binding: TarefaItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun vincularPersonagemComDados(tarefa: Tarefa) {
-
+            binding.nomeTarefa.text = tarefa.titulo
+            binding.descricaoDaTarefa.text = tarefa.conteudo
+            binding.dataVencimentoDaTarefa.text = ""
         }
     }
 
