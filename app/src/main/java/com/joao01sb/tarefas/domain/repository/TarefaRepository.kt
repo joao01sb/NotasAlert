@@ -24,6 +24,6 @@ class TarefaRepository(
     }
 
     suspend fun editarTarefa(id: Long, tarefa: Tarefa) {
-        dao.editarTarefa(id, tarefa)
+        dao.editarTarefa(tarefa)
     }
 }

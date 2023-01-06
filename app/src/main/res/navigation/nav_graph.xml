@@ -6,21 +6,24 @@
     app:startDestination="@id/fragmentListaTarefas">
     <fragment
         android:id="@+id/fragmentListaTarefas"
-        android:name="com.joao01sb.tarefas.FragmentListaTarefas"
+        android:name="com.joao01sb.tarefas.ui.fragment.FragmentListaTarefas"
         android:label="fragment_lista_tarefas"
         tools:layout="@layout/fragment_lista_tarefas" >
         <action
-            android:id="@+id/action_tarefas_para_tarefa"
+            android:id="@+id/deTarefas_para_tarefa"
             app:destination="@id/fragmentTarefaModificacoes"
-            app:popUpTo="@id/nav_graph" />
+            app:popUpTo="@id/fragmentTarefaModificacoes" />
     </fragment>
     <fragment
         android:id="@+id/fragmentTarefaModificacoes"
-        android:name="com.joao01sb.tarefas.FragmentTarefaModificacoes"
+        android:name="com.joao01sb.tarefas.ui.fragment.FragmentTarefaModificacoes"
         android:label="fragment_tarefa_modificacoes"
         tools:layout="@layout/fragment_tarefa_modificacoes" >
         <action
             android:id="@+id/action_tarefa_para_tarefas"
             app:destination="@id/fragmentListaTarefas" />
+        <argument
+            android:name="tarefa"
+            app:argType="com.joao01sb.tarefas.model.Tarefa" />
     </fragment>
 </navigation>

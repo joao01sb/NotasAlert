@@ -11,4 +11,4 @@ data class Tarefa (
     val titulo: String,
     val conteudo: String,
     val data: String
-    )
+    ) : java.io.Serializable
