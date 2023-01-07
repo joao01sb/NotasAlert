@@ -9,7 +9,7 @@ class TarefaViewModel(
     val repository: TarefaRepository
 ) : ViewModel() {
 
-    suspend fun salvarTarefa() {
+    suspend fun salvarTarefa(tarefa: Tarefa?) {
         if (tarefa != null) {
             repository.salvarTarefa(tarefa)
             return
