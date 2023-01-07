@@ -8,21 +8,21 @@ import com.joao01sb.tarefas.model.Tarefa
 interface TarefaDAO {
 
     @Query("SELECT * FROM Tarefa")
-     fun buscarTodas(): LiveData<List<Tarefa>>
+     suspend fun buscarTodas(): LiveData<List<Tarefa>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-     fun salva(tarefa: Tarefa)
+     suspend fun salva(tarefa: Tarefa)
 
     @Delete
-     fun remove(tarefa: Tarefa)
+     suspend fun remove(tarefa: Tarefa)
 
     @Query("SELECT * FROM Tarefa WHERE id = :id")
-    fun buscaPorId(id: Long): LiveData<Tarefa?>
+    suspend fun buscaPorId(id: Long): LiveData<Tarefa?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-     fun salva(tarefas: List<Tarefa>)
+     suspend fun salva(tarefas: List<Tarefa>)
 
     @Update()
-     fun editarTarefa(tarefa: Tarefa)
+     suspend fun editarTarefa(tarefa: Tarefa)
 
 }
