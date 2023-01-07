@@ -4,7 +4,9 @@ import androidx.room.Room
 import com.joao01sb.tarefas.data.AppDatabase
 import com.joao01sb.tarefas.data.dao.TarefaDAO
 import com.joao01sb.tarefas.domain.repository.TarefaRepository
+import com.joao01sb.tarefas.domain.viewModel.TarefaViewModel
 import com.joao01sb.tarefas.domain.viewModel.TarefasViewModel
+import com.joao01sb.tarefas.model.Tarefa
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -25,6 +27,8 @@ val appDatabase = module {
 //
 //    // com isso eu não presciso mais de fazer um factory e para poder passar parametros para esse viewmodel no provedor
     viewModel { TarefasViewModel(get()) }
+    viewModel { (t: Tarefa) -> TarefaViewModel(t, get()) }
+
 }
 
 /*tudo bem aqui sabemos que e uma injeçã de dependencia para usar e somente chamar
