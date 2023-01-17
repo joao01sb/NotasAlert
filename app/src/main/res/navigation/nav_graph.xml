@@ -8,7 +8,7 @@
         android:id="@+id/fragmentListaTarefas"
         android:name="com.joao01sb.tarefas.ui.fragment.FragmentListaTarefas"
         android:label="fragment_lista_tarefas"
-        tools:layout="@layout/fragment_lista_tarefas" >
+        tools:layout="@layout/fragment_list_task" >
         <action
             android:id="@+id/deTarefas_para_tarefa"
             app:destination="@id/fragmentTarefaModificacoes"
@@ -18,7 +18,7 @@
         android:id="@+id/fragmentTarefaModificacoes"
         android:name="com.joao01sb.tarefas.ui.fragment.FragmentTarefaModificacoes"
         android:label="fragment_tarefa_modificacoes"
-        tools:layout="@layout/fragment_tarefa_modificacoes" >
+        tools:layout="@layout/fragment_create_task" >
         <action
             android:id="@+id/action_tarefa_para_tarefas"
             app:destination="@id/fragmentListaTarefas" />

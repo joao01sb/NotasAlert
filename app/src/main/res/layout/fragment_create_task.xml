@@ -11,7 +11,7 @@
         android:id="@+id/nome_da_tarefa_campo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nome da tarefa"
+        android:hint="@string/nome_da_tarefa"
         android:layout_margin="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nome_da_tarefa_valor"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -39,7 +40,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/descricao_da_tarefa_valor"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -58,7 +60,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/data_da_tarefa_valor"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -71,27 +74,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-
-
-
-<!--    <EditText-->
-<!--        android:id="@+id/activity_formulario_noticia_texto"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:layout_marginBottom="8dp"-->
-<!--        android:background="@android:color/transparent"-->
-<!--        android:gravity="top"-->
-<!--        android:hint="Digite a descvricao"-->
-<!--        android:importantForAutofill="no"-->
-<!--        android:inputType="textMultiLine"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/activity_formulario_noticia_titulo"-->
-<!--        app:layout_constraintStart_toStartOf="@id/activity_formulario_noticia_titulo"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/activity_formulario_noticia_titulo"-->
-<!--        tools:ignore="UnusedAttribute" />-->
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
