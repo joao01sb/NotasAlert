@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentTarefaModificacoes"
-        android:name="com.joao01sb.tarefas.ui.fragment.FragmentTarefaModificacoes"
+        android:name="com.joao01sb.tarefas.ui.fragment.FragmentCreateTask"
         android:label="fragment_tarefa_modificacoes"
         tools:layout="@layout/fragment_create_task" >
         <action

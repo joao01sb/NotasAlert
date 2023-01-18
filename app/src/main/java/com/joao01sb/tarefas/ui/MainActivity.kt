@@ -22,9 +22,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.fab.setOnClickListener { view ->
-           findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.fragmentTarefaModificacoes)
+        binding.fab.setOnClickListener {
+            findNavController(R.id.nav_host_fragment_content_main).navigate(R.layout.fragment_create_task)
         }
     }
+
+
 
 }

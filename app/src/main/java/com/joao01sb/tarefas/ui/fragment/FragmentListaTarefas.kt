@@ -1,5 +1,6 @@
 package com.joao01sb.tarefas.ui.fragment
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +24,7 @@ class FragmentListaTarefas : Fragment() {
 
     private lateinit var binding: FragmentListTaskBinding
     private val tarefasViewModel: TarefasViewModel by viewModel()
+    lateinit var adapter: AdapterTarefas
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,15 +37,25 @@ class FragmentListaTarefas : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launch(IO) {
-            val adapterTarefas = tarefasViewModel.tarefaslista()?.let { AdapterTarefas(it) {task -> vaiParaTarefa(task) } }
-            withContext(Main) {
-                binding.listaTarefas.adapter = adapterTarefas
+            val adapterTarefas = tarefasViewModel.tarefaslista()
+            adapterTarefas?.let {
+                adapter = AdapterTarefas(adapterTarefas) {
+                    vaiParaTarefa(it)
+                }
             }
+            withContext(Main) {
+                if (tarefasViewModel.tarefaslista()!!.isEmpty()) {
+                    binding.listaTarefas.visibility = View.GONE
+                    binding.infoTarefasVazia.visibility = View.VISIBLE
+                }
+                binding.listaTarefas.adapter = adapter
+            }
+            binding.infoTarefasVazia.visibility = View.GONE
         }
     }
 
     private fun vaiParaTarefa(tarefa: Tarefa) {
-        val acao = FragmentTarefaModificacoesDirections.actionTarefaParaTarefas()
+        val acao = FragmentListaTarefasDirections.deTarefasParaTarefa(tarefa)
         findNavController().navigate(acao)
     }
 
