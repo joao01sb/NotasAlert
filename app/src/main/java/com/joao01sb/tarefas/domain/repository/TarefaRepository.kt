@@ -11,7 +11,7 @@ class TarefaRepository(
         dao.salva(tarefa)
     }
 
-    suspend fun buscarTarefas () : LiveData<List<Tarefa>> {
+    suspend fun buscarTarefas () : List<Tarefa> {
         return dao.buscarTodas()
     }
 

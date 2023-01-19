@@ -8,7 +8,7 @@ class TarefasViewModel(
     val repository: TarefaRepository
 ) : ViewModel() {
 
-    suspend fun tarefaslista() : List<Tarefa>?  = repository.buscarTarefas().value
+    suspend fun tarefaslista() : List<Tarefa>?  = repository.buscarTarefas()
 
 
 }

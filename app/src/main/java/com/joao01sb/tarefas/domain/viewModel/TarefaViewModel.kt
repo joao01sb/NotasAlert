@@ -6,7 +6,7 @@ import com.joao01sb.tarefas.model.Tarefa
 
 class TarefaViewModel(
     val tarefa: Tarefa? = null,
-    val repository: TarefaRepository
+    private val repository: TarefaRepository
 ) : ViewModel() {
 
     suspend fun salvarTarefa(tarefa: Tarefa?) {

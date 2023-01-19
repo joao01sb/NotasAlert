@@ -3,27 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentListaTarefas">
+    app:startDestination="@id/fragmentListNotes">
+
     <fragment
-        android:id="@+id/fragmentListaTarefas"
-        android:name="com.joao01sb.tarefas.ui.fragment.FragmentListaTarefas"
-        android:label="fragment_lista_tarefas"
-        tools:layout="@layout/fragment_list_task" >
+        android:id="@+id/fragmentListNotes"
+        android:name="com.joao01sb.tarefas.ui.fragment.FragmentListNotes"
+        android:label="fragment_list_notes"
+        tools:layout="@layout/fragment_list_notes" >
         <action
-            android:id="@+id/deTarefas_para_tarefa"
-            app:destination="@id/fragmentTarefaModificacoes"
-            app:popUpTo="@id/fragmentTarefaModificacoes" />
+            android:id="@+id/goListNotes_for_editeNote"
+            app:destination="@id/fragmentEditeNote" />
     </fragment>
     <fragment
-        android:id="@+id/fragmentTarefaModificacoes"
-        android:name="com.joao01sb.tarefas.ui.fragment.FragmentCreateTask"
-        android:label="fragment_tarefa_modificacoes"
-        tools:layout="@layout/fragment_create_task" >
-        <action
-            android:id="@+id/action_tarefa_para_tarefas"
-            app:destination="@id/fragmentListaTarefas" />
+        android:id="@+id/fragmentEditeNote"
+        android:name="com.joao01sb.tarefas.ui.fragment.FragmentEditeNote"
+        android:label="fragment_edite_note"
+        tools:layout="@layout/fragment_edite_note" >
         <argument
             android:name="tarefa"
-            app:argType="com.joao01sb.tarefas.model.Tarefa" />
+            app:argType="com.joao01sb.tarefas.model.Tarefa"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 </navigation>

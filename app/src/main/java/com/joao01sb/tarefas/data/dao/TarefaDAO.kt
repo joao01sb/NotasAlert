@@ -8,7 +8,7 @@ import com.joao01sb.tarefas.model.Tarefa
 interface TarefaDAO {
 
     @Query("SELECT * FROM Tarefa")
-     fun buscarTodas(): LiveData<List<Tarefa>>
+     fun buscarTodas(): List<Tarefa>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
      fun salva(tarefa: Tarefa)
