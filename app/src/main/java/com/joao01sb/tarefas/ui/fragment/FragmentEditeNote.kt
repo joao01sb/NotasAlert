@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.joao01sb.tarefas.databinding.FragmentEditeNoteBinding
 import com.joao01sb.tarefas.domain.viewModel.TarefaViewModel
+import com.joao01sb.tarefas.extra.Util.formatDate
 import com.joao01sb.tarefas.model.Tarefa
 import com.joao01sb.tarefas.ui.dialog.DataPickerDialog
 import kotlinx.coroutines.Dispatchers
@@ -42,7 +43,7 @@ class FragmentEditeNote : Fragment() {
                 id = null,
                 titulo = binding.nomeDaTarefaValor.text.toString(),
                 conteudo = binding.descricaoDaTarefaValor.text.toString(),
-                data = binding.dataTarefa.text.toString()
+                data = binding.dataTarefa.text.toString().formatDate()
             )
             lifecycleScope.launch(Dispatchers.IO) {
                 tarefaViewModel.salvarTarefa(novaTarefa)
@@ -60,20 +61,16 @@ class FragmentEditeNote : Fragment() {
     }
 
     private fun dialogPickData() {
-        // criando o dialog
         val dataPickerDialog = DataPickerDialog()
         val supportfragmentManager = requireActivity().supportFragmentManager
-
-        // we have implementation setFragmentResultListiner
         supportfragmentManager.setFragmentResultListener(
             "REQUEST_CODE", viewLifecycleOwner
         ) { requestKey, bundle ->
-            if (requestKey == "REQUEST_KEY") {
+            if (requestKey == "REQUEST_CODE") {
                 val args = bundle.getString("SELECTED_DATE")
-                binding.dataTarefa.text = args
+                binding.dataTarefa.text = args?.formatDate()
             }
         }
-
         dataPickerDialog.show(supportfragmentManager, "DatePickerFragment")
     }
 

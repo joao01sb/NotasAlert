@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.joao01sb.tarefas.databinding.TaskItemBinding
+import com.joao01sb.tarefas.extra.Util.formatDate
 import com.joao01sb.tarefas.model.Tarefa
 
 class AdapterTarefas(
@@ -17,7 +18,7 @@ class AdapterTarefas(
         fun vincularPersonagemComDados(tarefa: Tarefa) {
             binding.nomeTarefa.text = tarefa.titulo
             binding.descricaoDaTarefa.text = tarefa.conteudo
-            binding.dataVencimentoDaTarefa.text = ""
+            binding.dataVencimentoDaTarefa.text = tarefa.data.formatDate()
         }
     }
 
