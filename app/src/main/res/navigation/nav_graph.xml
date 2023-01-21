@@ -11,8 +11,19 @@
         android:label="fragment_list_notes"
         tools:layout="@layout/fragment_list_notes" >
         <action
-            android:id="@+id/goListNotes_for_editeNote"
-            app:destination="@id/fragmentEditeNote" />
+            android:id="@+id/go_notes_for_noteDetails"
+            app:destination="@id/fragmentDetailsNote"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/go_notes_for_editeNote"
+            app:destination="@id/fragmentEditeNote"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/fragmentEditeNote"
@@ -24,5 +35,28 @@
             app:argType="com.joao01sb.tarefas.model.Tarefa"
             app:nullable="true"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/go_noteEdite_for_notes"
+            app:destination="@id/fragmentListNotes"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetailsNote"
+        android:name="com.joao01sb.tarefas.ui.fragment.FragmentDetailsNote"
+        android:label="FragmentDetailsNote"
+        tools:layout="@layout/fragment_details_note">
+        <action
+            android:id="@+id/go_noteDetails_for_noteEdite"
+            app:destination="@id/fragmentEditeNote"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="note"
+            app:argType="com.joao01sb.tarefas.model.Tarefa" />
     </fragment>
 </navigation>

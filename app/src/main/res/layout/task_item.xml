@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:backgroundTint="@color/lightGray"
+    app:cardCornerRadius="0dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,9 +15,14 @@
             android:id="@+id/nome_tarefa"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:text="@string/nomedatarefa"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/icone_vencimento"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,8 +31,12 @@
             android:id="@+id/descricaoDaTarefa"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="6dp"
             android:text="@string/descricao_da_tarefa"
+            android:maxLines="1"
+            android:ellipsize="end"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/icone_vencimento"
             app:layout_constraintTop_toBottomOf="@+id/nome_tarefa" />
@@ -34,8 +44,10 @@
         <TextView
             android:id="@+id/dataVencimentoDaTarefa"
             android:layout_width="0dp"
-            android:layout_margin="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="6dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="@string/dataLimiteDaTarefa"
             app:layout_constraintTop_toBottomOf="@+id/descricaoDaTarefa"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -46,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_baseline_access_time_24"
+            android:src="@drawable/ic_time_valido"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

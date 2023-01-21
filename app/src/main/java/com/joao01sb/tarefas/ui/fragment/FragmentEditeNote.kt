@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
@@ -34,36 +35,43 @@ class FragmentEditeNote : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        isEditerOrNewNote()
+        requireActivity().actionBar?.setDisplayHomeAsUpEnabled(true)
+        isEditeOrNewNote()
         binding.dataTarefa.setOnClickListener {
-            dialogPickData()
+            editeDateNote()
         }
         binding.salvaTarefaButtom.setOnClickListener {
-            val novaTarefa = Tarefa(
-                id = null,
-                titulo = binding.nomeDaTarefaValor.text.toString(),
-                conteudo = binding.descricaoDaTarefaValor.text.toString(),
-                data = binding.dataTarefa.text.toString().formatDate()
-            )
+            saveNote()
+        }
+    }
+
+    private fun saveNote() {
+        val newNote = Tarefa(
+            id = null,
+            titulo = binding.nomeDaTarefaValor.text.toString(),
+            conteudo = binding.descricaoDaTarefaValor.text.toString(),
+            data = binding.dataTarefa.text.toString().formatDate()
+        )
+        try {
             lifecycleScope.launch(Dispatchers.IO) {
-                tarefaViewModel.salvarTarefa(novaTarefa)
+                tarefaViewModel.salvarTarefa(newNote)
             }
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), "Erro ao salvar note verifique todos os campos e tente novamente", Toast.LENGTH_LONG).show()
         }
     }
 
-    private fun isEditerOrNewNote() {
-        val tarefa = tarefaViewModel.tarefa
-        if (tarefa != null) {
-            binding.descricaoDaTarefaValor.setText(tarefa.conteudo)
-            binding.nomeDaTarefaValor.setText(tarefa.titulo)
-            binding.dataTarefa.text = tarefa.data
+    private fun isEditeOrNewNote() {
+        args.tarefa?.let { note ->
+            binding.nomeDaTarefaValor.setText(note.titulo)
+            binding.descricaoDaTarefaValor.setText(note.conteudo)
         }
     }
 
-    private fun dialogPickData() {
+    private fun editeDateNote() {
         val dataPickerDialog = DataPickerDialog()
-        val supportfragmentManager = requireActivity().supportFragmentManager
-        supportfragmentManager.setFragmentResultListener(
+        val supportFragmentManager = requireActivity().supportFragmentManager
+        supportFragmentManager.setFragmentResultListener(
             "REQUEST_CODE", viewLifecycleOwner
         ) { requestKey, bundle ->
             if (requestKey == "REQUEST_CODE") {
@@ -71,7 +79,7 @@ class FragmentEditeNote : Fragment() {
                 binding.dataTarefa.text = args?.formatDate()
             }
         }
-        dataPickerDialog.show(supportfragmentManager, "DatePickerFragment")
+        dataPickerDialog.show(supportFragmentManager, "DatePickerFragment")
     }
 
 }

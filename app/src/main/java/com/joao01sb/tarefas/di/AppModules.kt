@@ -11,19 +11,16 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val appDatabase = module {
+    // instancia do banco
     single<AppDatabase>{ Room.databaseBuilder(
         get(),
         AppDatabase::class.java,
         "tarefas.db"
     ).build() }
 
-    single<TarefaDAO> {
-        get<AppDatabase>().tarefaDAO
-    }
+    single<TarefaDAO> { get<AppDatabase>().tarefaDAO }
 
-    single<TarefaRepository> {
-        TarefaRepository(get())
-    }
+    single<TarefaRepository> { TarefaRepository(get()) }
 //
 //    // com isso eu não presciso mais de fazer um factory e para poder passar parametros para esse viewmodel no provedor
     viewModel { TarefasViewModel(get()) }

@@ -19,6 +19,9 @@ class AdapterTarefas(
             binding.nomeTarefa.text = tarefa.titulo
             binding.descricaoDaTarefa.text = tarefa.conteudo
             binding.dataVencimentoDaTarefa.text = tarefa.data.formatDate()
+            binding.root.setOnClickListener {
+                onItemClickListener(tarefa)
+            }
         }
     }
 
