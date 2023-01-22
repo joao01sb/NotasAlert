@@ -1,4 +1,4 @@
-<h1 align="center" id="title">Tarefas</h1>
+<h1 align="center" id="title">TarefasAlert</h1>
 <h3 align="center">
    Aplicação Android onde e possivel criar uma tarefa com notificação no horario escolhido
 </h3>
@@ -72,10 +72,10 @@ Este Projeto é divido em 6 Principais Partes:
 ```bash
 
 # Clone este repositório
-$ git clone https://github.com/joao01sb/Tarefas.git
+$ git clone https://github.com/joao01sb/TarefasAlert.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd Tarefas
+$ cd TarefasAlert
 
 ```
 
