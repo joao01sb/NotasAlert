@@ -1,14 +1,17 @@
 package com.joao01sb.tarefas.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.joao01sb.tarefas.R
 import com.joao01sb.tarefas.databinding.FragmentDetailsNoteBinding
+import com.joao01sb.tarefas.extra.Util.formatDate
 import com.joao01sb.tarefas.model.Tarefa
 
 class FragmentDetailsNote : Fragment() {
@@ -20,7 +23,7 @@ class FragmentDetailsNote : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetailsNoteBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -28,21 +31,45 @@ class FragmentDetailsNote : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requireActivity().actionBar?.setDisplayHomeAsUpEnabled(true)
+        requireActivity().actionBar?.title = " Detalhes da Nota"
         argsNote?.note?.let { note ->
             configViewNoteDetails(note)
         } ?: Toast.makeText(requireContext(), "Tarefa invalida!", Toast.LENGTH_SHORT).show()
+        setupMenu()
     }
 
     private fun configViewNoteDetails(note: Tarefa?) {
         binding.apply {
             nomeNoteDetails.text = note?.titulo
             descricaoNoteDetails.text = note?.conteudo
-            dataNoteDetails.text = note?.data
+            dataNoteDetails.text = note?.data?.formatDate()
         }
+    }
+
+    private fun deleteNote() {
+        findNavController().popBackStack()
     }
 
     private fun goEditeNote() {
         val direction = FragmentDetailsNoteDirections.goNoteDetailsForNoteEdite(argsNote?.note)
         findNavController().navigate(direction)
     }
+
+    private fun setupMenu() {
+        (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.menu_details_note, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                when (menuItem.itemId) {
+                    R.id.menu_detalhes_produto_altera -> goEditeNote()
+                    R.id.menu_detalhes_produto_remove -> deleteNote()
+                }
+                return true
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+
 }

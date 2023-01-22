@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:backgroundTint="@color/lightGray"
     app:cardCornerRadius="0dp"
+    android:layout_margin="1dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +22,7 @@
             android:maxLines="1"
             android:ellipsize="end"
             android:text="@string/nomedatarefa"
-            android:textSize="18sp"
+            android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/icone_vencimento"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +38,7 @@
             android:text="@string/descricao_da_tarefa"
             android:maxLines="1"
             android:ellipsize="end"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/icone_vencimento"
             app:layout_constraintTop_toBottomOf="@+id/nome_tarefa" />
@@ -48,6 +50,7 @@
             android:layout_marginBottom="6dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:textSize="20sp"
             android:text="@string/dataLimiteDaTarefa"
             app:layout_constraintTop_toBottomOf="@+id/descricaoDaTarefa"
             app:layout_constraintBottom_toBottomOf="parent"

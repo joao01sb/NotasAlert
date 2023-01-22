@@ -13,6 +13,7 @@ import com.joao01sb.tarefas.model.Tarefa
 import com.joao01sb.tarefas.ui.adapter.AdapterTarefas
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FragmentListNotes : Fragment() {
@@ -43,16 +44,19 @@ class FragmentListNotes : Fragment() {
     private fun configRecyclerView() {
         lifecycleScope.launch(Dispatchers.IO) {
             val listNote = tarefasViewModel.tarefaslista()
-            if (listNote != null) {
-                this@FragmentListNotes.adapter = AdapterTarefas(listNote) { note ->
-                    goDetailsNote(note)
-                }
-                lifecycleScope.launch(Dispatchers.Main) {
+            if (!listNote.isNullOrEmpty()) {
+                withContext(Dispatchers.Main) {
+                    binding.infoTarefasVazia.visibility = View.GONE
+                    this@FragmentListNotes.adapter = AdapterTarefas(listNote) { note ->
+                        goDetailsNote(note)
+                    }
                     binding.listaTarefas.adapter = adapter
                 }
             } else {
-                binding.listaTarefas.visibility = View.GONE
-                binding.infoTarefasVazia.visibility = View.VISIBLE
+                withContext(Dispatchers.Main) {
+                    binding.listaTarefas.visibility = View.GONE
+                    binding.infoTarefasVazia.visibility = View.VISIBLE
+                }
             }
         }
     }
