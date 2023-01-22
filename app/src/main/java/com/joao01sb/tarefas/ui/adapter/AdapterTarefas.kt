@@ -3,17 +3,11 @@ package com.joao01sb.tarefas.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.toColor
 import androidx.recyclerview.widget.RecyclerView
 import com.joao01sb.tarefas.R
 import com.joao01sb.tarefas.databinding.TaskItemBinding
-import com.joao01sb.tarefas.extra.Util.compareToCurrentDateTime
 import com.joao01sb.tarefas.extra.Util.formatDate
-import com.joao01sb.tarefas.extra.Util.toDate
 import com.joao01sb.tarefas.model.Tarefa
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 

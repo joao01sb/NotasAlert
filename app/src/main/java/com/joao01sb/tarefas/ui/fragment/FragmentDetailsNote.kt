@@ -7,17 +7,24 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.joao01sb.tarefas.R
 import com.joao01sb.tarefas.databinding.FragmentDetailsNoteBinding
+import com.joao01sb.tarefas.domain.viewModel.TarefaViewModel
 import com.joao01sb.tarefas.extra.Util.formatDate
 import com.joao01sb.tarefas.model.Tarefa
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class FragmentDetailsNote : Fragment() {
 
     private lateinit var binding: FragmentDetailsNoteBinding
     private val argsNote: FragmentDetailsNoteArgs? by navArgs()
+    private val tarefaViewModel: TarefaViewModel by viewModel { parametersOf(argsNote?.note) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +54,9 @@ class FragmentDetailsNote : Fragment() {
     }
 
     private fun deleteNote() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            tarefaViewModel.deletarTarefa(argsNote?.note)
+        }
         findNavController().popBackStack()
     }
 

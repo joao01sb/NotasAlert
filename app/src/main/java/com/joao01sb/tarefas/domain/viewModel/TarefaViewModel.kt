@@ -16,4 +16,12 @@ class TarefaViewModel(
         }
         throw java.lang.Exception("Tarefa não selecionada")
     }
+
+    suspend fun deletarTarefa(tarefa: Tarefa?) {
+        if (tarefa != null) {
+            repository.deletarTarefa(tarefa)
+            return
+        }
+        throw java.lang.Exception("Tarefa não selecionada")
+    }
 }
