@@ -1,12 +1,15 @@
 package com.joao01sb.tarefas.ui.fragment
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
+import android.app.*
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.DatePicker
 import android.widget.TimePicker
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -19,6 +22,8 @@ import com.joao01sb.tarefas.databinding.FragmentEditeNoteBinding
 import com.joao01sb.tarefas.domain.viewModel.TarefaViewModel
 import com.joao01sb.tarefas.extra.Util.formatDate
 import com.joao01sb.tarefas.model.Tarefa
+import com.joao01sb.tarefas.notification.*
+import com.joao01sb.tarefas.notification.Notification
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -35,6 +40,12 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
     private val tarefaViewModel: TarefaViewModel by viewModel { parametersOf(args.tarefa) }
     private val calendar = Calendar.getInstance()
     private lateinit var dataSelecionada: String
+
+    var daySelecionado = 0
+    var mesSelecionado = 0
+    var anoSelecionado = 0
+    var horaSelecionada = 0
+    var minutoSelecionado = 0
 
 
     override fun onCreateView(
@@ -54,6 +65,7 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
         binding.salvaTarefaButtom.setOnClickListener {
             saveNote()
         }
+        createNotificationChannel()
     }
 
     private fun saveNote() {
@@ -82,6 +94,7 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
                         Toast.LENGTH_LONG
                     ).show()
                 }
+                scheduleNotification()
                 findNavController().popBackStack()
             }
         } else {
@@ -113,6 +126,9 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
         calendar.set(Calendar.DAY_OF_MONTH, p3)
         calendar.set(Calendar.MONTH, p2)
         calendar.set(Calendar.YEAR, p1)
+        daySelecionado = p3
+        mesSelecionado = p2
+        anoSelecionado = p3
 
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minutes = calendar.get(Calendar.MINUTE)
@@ -122,9 +138,69 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
     override fun onTimeSet(p0: TimePicker?, p1: Int, p2: Int) {
         calendar.set(Calendar.HOUR_OF_DAY, p1)
         calendar.set(Calendar.MINUTE, p2)
-        dataSelecionada =
-            SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(calendar.time)
+        horaSelecionada = p1
+        minutoSelecionado = p2
+
+        dataSelecionada = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(calendar.time)
         binding.dataTarefa.text = dataSelecionada.formatDate()
+    }
+
+    private fun scheduleNotification()
+    {
+        val intent = Intent(requireActivity().applicationContext, Notification::class.java)
+        val title = binding.nomeDaTarefaValor.text.toString()
+        val message = binding.descricaoDaTarefaValor.text.toString()
+        intent.putExtra(titleExtra, title)
+        intent.putExtra(messageExtra, message)
+
+        val pendingIntent = PendingIntent.getBroadcast(
+            requireActivity().applicationContext,
+            notificationID,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val alarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val time = getTime()
+        alarmManager.setExactAndAllowWhileIdle(
+            AlarmManager.RTC_WAKEUP,
+            time,
+            pendingIntent
+        )
+        showAlert(time, title, message)
+    }
+
+    private fun showAlert(time: Long, title: String, message: String)
+    {
+        val date = Date(time)
+        val dateFormat = android.text.format.DateFormat.getLongDateFormat(requireActivity().applicationContext)
+        val timeFormat = android.text.format.DateFormat.getTimeFormat(requireActivity().applicationContext)
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Notification Scheduled")
+            .setMessage(
+                "Title: " + title +
+                        "\nMessage: " + message +
+                        "\nAt: " + dateFormat.format(date) + " " + timeFormat.format(date))
+            .setPositiveButton("Okay"){_,_ ->}
+            .show()
+    }
+
+    private fun getTime(): Long {
+
+        calendar.set(anoSelecionado, mesSelecionado, daySelecionado, horaSelecionada, minutoSelecionado)
+        return calendar.timeInMillis
+    }
+
+    private fun createNotificationChannel()
+    {
+        val name = "Notif Channel"
+        val desc = "A Description of the Channel"
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel(channelID, name, importance)
+        channel.description = desc
+        val notificationManager = requireActivity().getSystemService(AppCompatActivity.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
     }
 
 }
