@@ -4,20 +4,17 @@ import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.TimePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.joao01sb.tarefas.R
 import com.joao01sb.tarefas.databinding.FragmentEditeNoteBinding
 import com.joao01sb.tarefas.domain.viewModel.TarefaViewModel
 import com.joao01sb.tarefas.extra.Util.formatDate
@@ -94,7 +91,9 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
                         Toast.LENGTH_LONG
                     ).show()
                 }
-                scheduleNotification()
+                if (SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).parse(dataSelecionada).time - System.currentTimeMillis() > 0) {
+                    scheduleNotification()
+                }
                 findNavController().popBackStack()
             }
         } else {
@@ -128,7 +127,7 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
         calendar.set(Calendar.YEAR, p1)
         daySelecionado = p3
         mesSelecionado = p2
-        anoSelecionado = p3
+        anoSelecionado = p1
 
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minutes = calendar.get(Calendar.MINUTE)

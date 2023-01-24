@@ -27,9 +27,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         NavigationUI.setupActionBarWithNavController(this, navHostFragment.navController)
     }
 
-
-
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> findNavController(R.id.nav_host_fragment_content_main).popBackStack()
