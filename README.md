@@ -1,6 +1,6 @@
-<h1 align="center" id="title">TarefasAlert</h1>
+<h1 align="center" id="title">NotasAlert</h1>
 <h3 align="center">
-   Aplicação Android onde e possivel criar uma tarefa com notificação no horario escolhido
+   Aplicação Android onde e possivel criar uma Nota com notificação no horario escolhido
 </h3>
 
 <br/>
@@ -31,14 +31,14 @@ Tabela de conteúdos
 # 💻 Sobre o projeto
 
 **Tarefas** - Projeto desenvolvido para o Estudo da ferramentas do framework android, Gerenciamento de navegação entre
-fragments, Koin para injeção de dependencias e Room para manipular dados no Banco SQlite.
+fragments, Alarm e notification, Koin para injeção de dependencias e Room para manipular dados no Banco SQlite.
 
 ## 📰 Funcionalidades
 
 - [x] A Aplicação ira exibir:
-  - [x] Lista de Tarefas
-  - [x] botão para adicionar tarefa nova
-  - [x] click para alterar tarefa já existente
+  - [x] Lista de Notas
+  - [x] botão para adicionar nova Nota
+  - [x] click para alterar Nota já existente
 
 - [x] Outros Recuros:
   - [X] Manipulação de Dados entre Activities
@@ -60,22 +60,22 @@ Antes de começar, você vai precisar ter instalado em sua máquina:
 <br/>
 
 Este Projeto é divido em 6 Principais Partes:
-1. [Configurações das Telas](app/src/main/java/com/app/rickandmorty/ui)
+1. [Configurações das Telas](app/src/main/java/com/app/tarefas/ui)
 2. [Layout das Telas](app/src/main/res/layout)
-3. [Classes modelo](app/src/main/java/com/app/rickandmorty/models)
-4. [injeção de dependecia](app/src/main/java/com/app/rickandmorty/di)
-5. [banco de dados e Dao](app/src/main/java/com/app/rickandmorty/data)
-6. [dominio e repositorios](app/src/main/java/com/app/rickandmorty/domain)
+3. [Classes modelo](app/src/main/java/com/app/tarefas/models)
+4. [injeção de dependecia](app/src/main/java/com/app/tarefas/di)
+5. [banco de dados e Dao](app/src/main/java/com/app/tarefas/data)
+6. [dominio e repositorios](app/src/main/java/com/app/tarefas/domain)
 
 ### 📥 Baixando o Projeto
 
 ```bash
 
 # Clone este repositório
-$ git clone https://github.com/joao01sb/TarefasAlert.git
+$ git clone https://github.com/joao01sb/NotasAlert.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd TarefasAlert
+$ cd NotasAlert
 
 ```
 
