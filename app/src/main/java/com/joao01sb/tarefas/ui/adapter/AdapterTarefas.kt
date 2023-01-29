@@ -23,9 +23,9 @@ class AdapterTarefas(
         fun vincularPersonagemComDados(tarefa: Tarefa) {
 
             binding.nomeTarefa.text = tarefa.titulo
-            binding.descricaoDaTarefa.text = tarefa.conteudo
-            if (binding.descricaoDaTarefa.text.isBlank())
-                binding.descricaoDaTarefa.visibility = View.GONE
+            binding.descricaoTarefa.text = tarefa.conteudo
+            if (binding.descricaoTarefa.text.isBlank())
+                binding.descricaoTarefa.visibility = View.GONE
 
             verificaDataDaTarefa(tarefa.data)
             binding.dataVencimentoDaTarefa.text = tarefa.data.formatDate()
