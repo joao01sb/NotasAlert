@@ -7,13 +7,13 @@
 
 <p align="center" id="icons">
   <a href="#icons">
-    <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/joao01sb/Tarefas?color=2304D361">
+    <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/joao01sb/NotasUp?color=2304D361">
   </a>
   <a href="https://github.com/guilhermePalma/RecyclerView">
-    <img alt="Repository size" src="https://img.shields.io/github/repo-size/joao01sb/Tarefas">
+    <img alt="Repository size" src="https://img.shields.io/github/repo-size/joao01sb/NotasUp">
   </a>
   <a href="https://github.com/guilhermePalma/RecyclerView/commits/main">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/joao01sb/Tarefas">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/joao01sb/NotasUp">
   </a>
 </p>
 
@@ -30,7 +30,7 @@ Tabela de conteúdos
 
 # 💻 Sobre o projeto
 
-**Tarefas** - Projeto desenvolvido para o Estudo da ferramentas do framework android, Gerenciamento de navegação entre
+**NotasUp** - Projeto desenvolvido para o Estudo da ferramentas do framework android, Gerenciamento de navegação entre
 fragments, Alarm e notification, Koin para injeção de dependencias e Room para manipular dados no Banco SQlite.
 
 ## 📰 Funcionalidades
@@ -72,10 +72,10 @@ Este Projeto é divido em 6 Principais Partes:
 ```bash
 
 # Clone este repositório
-$ git clone https://github.com/joao01sb/NotasAlert.git
+$ git clone https://github.com/joao01sb/NotasUp.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd NotasAlert
+$ cd NotasUp
 
 ```
 
