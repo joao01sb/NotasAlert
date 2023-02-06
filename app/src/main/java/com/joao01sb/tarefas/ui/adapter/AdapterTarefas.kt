@@ -27,7 +27,7 @@ class AdapterTarefas(
             if (binding.descricaoTarefa.text.isBlank())
                 binding.descricaoTarefa.visibility = View.GONE
 
-            verificaDataDaTarefa(tarefa.data)
+//            verificaDataDaTarefa(tarefa.data)
             binding.dataVencimentoDaTarefa.text = tarefa.data.formatDate()
 
             binding.root.setOnClickListener {
@@ -35,14 +35,15 @@ class AdapterTarefas(
             }
         }
 
-        private fun verificaDataDaTarefa(tarefaData: String) {
-            val data =
-                SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).parse(tarefaData)
-            if (data.time - System.currentTimeMillis() > 0)
-                binding.iconeVencimento.setImageResource(R.drawable.ic_time_valido)
-            else
-                binding.iconeVencimento.setImageResource(R.drawable.ic_time_vencido)
-        }
+//        private fun verificaDataDaTarefa(tarefaData: String) {
+//            val data =
+//                SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).parse(tarefaData)
+//            if (data.time - System.currentTimeMillis() > 0)
+////                binding.iconeVencimento.setImageResource(R.drawable.ic_time_valido)
+//                binding.dataVencimentoDaTarefa.
+//            else
+//                binding.iconeVencimento.setImageResource(R.drawable.ic_time_vencido)
+//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =

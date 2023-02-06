@@ -37,12 +37,18 @@ class FragmentDetailsNote : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().actionBar?.setDisplayHomeAsUpEnabled(true)
-        requireActivity().actionBar?.title = " Detalhes da Nota"
         argsNote?.note?.let { note ->
             configViewNoteDetails(note)
         } ?: Toast.makeText(requireContext(), "Tarefa invalida!", Toast.LENGTH_SHORT).show()
-        setupMenu()
+        binding.iconeApagarDetalhes.setOnClickListener {
+            deleteNote()
+        }
+        binding.iconeEditarDetalhes.setOnClickListener {
+            goEditeNote()
+        }
+        binding.iconeVoltarDetalhes.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun configViewNoteDetails(note: Tarefa?) {
@@ -65,21 +71,21 @@ class FragmentDetailsNote : Fragment() {
         findNavController().navigate(direction)
     }
 
-    private fun setupMenu() {
-        (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_details_note, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                when (menuItem.itemId) {
-                    R.id.menu_detalhes_produto_altera -> goEditeNote()
-                    R.id.menu_detalhes_produto_remove -> deleteNote()
-                }
-                return true
-            }
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-    }
+//    private fun setupMenu() {
+//        (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
+//            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+//                menuInflater.inflate(R.menu.menu_details_note, menu)
+//            }
+//
+//            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+//                when (menuItem.itemId) {
+//                    R.id.menu_detalhes_produto_altera -> goEditeNote()
+//                    R.id.menu_detalhes_produto_remove -> deleteNote()
+//                }
+//                return true
+//            }
+//        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+//    }
 
 
 }

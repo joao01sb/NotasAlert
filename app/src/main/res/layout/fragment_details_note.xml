@@ -5,18 +5,48 @@
     android:background="@color/lightGray"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <ImageView
+        android:id="@+id/icone_voltar_detalhes"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_margin="8dp"
+        android:src="@drawable/back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/icone_editar_detalhes"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="46dp"
+        android:src="@drawable/ic_action_editar"
+        app:layout_constraintEnd_toEndOf="@id/icone_apagar_detalhes"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/icone_apagar_detalhes"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_margin="6dp"
+        android:src="@drawable/ic_action_lixeira"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <TextView
         android:id="@+id/nome_note_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/icone_voltar_detalhes"
         app:layout_constraintStart_toStartOf="parent"
         android:text="Nome da tarefa descrição"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="28dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="2dp" />
+        android:layout_marginTop="14dp" />
 
     <TextView
         android:id="@+id/descricao_note_details"

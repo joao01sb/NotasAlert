@@ -38,11 +38,11 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
     private val calendar = Calendar.getInstance()
     private lateinit var dataSelecionada: String
 
-    var daySelecionado = 0
-    var mesSelecionado = 0
-    var anoSelecionado = 0
-    var horaSelecionada = 0
-    var minutoSelecionado = 0
+    private var daySelecionado = 0
+    private var mesSelecionado = 0
+    private var anoSelecionado = 0
+    private var horaSelecionada = 0
+    private var minutoSelecionado = 0
 
 
     override fun onCreateView(
@@ -61,6 +61,9 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
         }
         binding.salvaTarefaButtom.setOnClickListener {
             saveNote()
+        }
+        binding.iconeVoltarEditar.setOnClickListener {
+            back()
         }
         createNotificationChannel()
     }
@@ -166,7 +169,7 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
             time,
             pendingIntent
         )
-        showAlert(time, title, message)
+//        showAlert(time, title, message)
     }
 
     private fun showAlert(time: Long, title: String, message: String)
@@ -185,8 +188,11 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
             .show()
     }
 
-    private fun getTime(): Long {
+    private fun back() {
+        findNavController().popBackStack()
+    }
 
+    private fun getTime(): Long {
         calendar.set(anoSelecionado, mesSelecionado, daySelecionado, horaSelecionada, minutoSelecionado)
         return calendar.timeInMillis
     }
