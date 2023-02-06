@@ -7,13 +7,13 @@
 
 <p align="center" id="icons">
   <a href="#icons">
-    <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/joao01sb/NotasUp?color=2304D361">
+    <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/joao01sb/Tarefas?color=2304D361">
   </a>
   <a href="https://github.com/guilhermePalma/RecyclerView">
-    <img alt="Repository size" src="https://img.shields.io/github/repo-size/joao01sb/NotasUp">
+    <img alt="Repository size" src="https://img.shields.io/github/repo-size/joao01sb/Tarefas">
   </a>
   <a href="https://github.com/guilhermePalma/RecyclerView/commits/main">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/joao01sb/NotasUp">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/joao01sb/Tarefas">
   </a>
 </p>
 
