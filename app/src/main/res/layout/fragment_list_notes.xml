@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/lightGray"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.FragmentListNotes">
 
@@ -17,7 +16,6 @@
         android:layout_margin="6dp"
         android:textSize="30sp"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@id/lista_tarefas"
         app:layout_constraintEnd_toStartOf="@id/icone_tarefa_buscar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -57,9 +55,9 @@
         android:id="@+id/lista_tarefas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titulo_tarefas"
         tools:listitem="@layout/task_item" />
