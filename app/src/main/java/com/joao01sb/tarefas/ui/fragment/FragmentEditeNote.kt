@@ -85,7 +85,7 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
                     data = dataSelecionada
                 )
                 try {
-                    lifecycleScope.launch(Dispatchers.IO) {
+                    viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
                         tarefaViewModel.salvarTarefa(newNote)
                     }
                 } catch (e: Exception) {
@@ -170,7 +170,7 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
             time,
             pendingIntent
         )
-//        showAlert(time, title, message)
+        showAlert(time, title, message)
     }
 
     private fun showAlert(time: Long, title: String, message: String)
@@ -180,10 +180,10 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
         val timeFormat = android.text.format.DateFormat.getTimeFormat(requireActivity().applicationContext)
 
         AlertDialog.Builder(requireContext())
-            .setTitle("Notification Scheduled")
+            .setTitle("Notificação")
             .setMessage(
-                "Title: " + title +
-                        "\nMessage: " + message +
+                "Titulo: " + title +
+                        "\nMensagem: " + message +
                         "\nAt: " + dateFormat.format(date) + " " + timeFormat.format(date))
             .setPositiveButton("Okay"){_,_ ->}
             .show()
