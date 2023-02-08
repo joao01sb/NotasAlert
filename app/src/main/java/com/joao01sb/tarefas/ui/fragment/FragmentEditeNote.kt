@@ -21,6 +21,7 @@ import com.joao01sb.tarefas.extra.Util.formatDate
 import com.joao01sb.tarefas.model.Tarefa
 import com.joao01sb.tarefas.notification.*
 import com.joao01sb.tarefas.notification.Notification
+import com.joao01sb.tarefas.notification.Notification.Companion.notificationID
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel

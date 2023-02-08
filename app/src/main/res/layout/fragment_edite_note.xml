@@ -43,7 +43,7 @@
         android:id="@+id/descricao_da_tarefa_campo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nome da tarefa"
+        android:hint="Descrição da tarefa"
         android:layout_margin="8dp"
         android:gravity="top"
         android:textColorHint="@color/black"

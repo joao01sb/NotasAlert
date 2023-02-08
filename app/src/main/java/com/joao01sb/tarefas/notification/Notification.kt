@@ -1,5 +1,6 @@
 package com.joao01sb.tarefas.notification
 
+import android.app.AlertDialog
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.TaskStackBuilder
@@ -10,15 +11,20 @@ import androidx.core.app.NotificationCompat
 import com.joao01sb.tarefas.R
 import com.joao01sb.tarefas.ui.MainActivity
 
-const val notificationID = 1
+
 const val channelID = "channel1"
 const val titleExtra = "titleExtra"
 const val messageExtra = "messageExtra"
 
-class Notification : BroadcastReceiver()
-{
-    override fun onReceive(context: Context, intent: Intent)
-    {
+class Notification : BroadcastReceiver() {
+
+    companion object {
+        var notificationID = 0
+    }
+
+    override fun onReceive(context: Context, intent: Intent) {
+
+        notificationID++
 
         val resultIntent = Intent(context, MainActivity::class.java)
         val resultPendingIntent: PendingIntent? = TaskStackBuilder.create(context).run {
@@ -32,6 +38,11 @@ class Notification : BroadcastReceiver()
             .setContentText(intent.getStringExtra(messageExtra))
             .setSmallIcon(R.drawable.ic_notification)
             .setContentIntent(resultPendingIntent)
+            .setStyle(
+                NotificationCompat.BigTextStyle()
+                    .bigText(intent.getStringExtra(messageExtra))
+            )
+            .setAutoCancel(true)
             .build()
 
         val  manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -39,3 +50,5 @@ class Notification : BroadcastReceiver()
     }
 
 }
+
+
