@@ -43,9 +43,6 @@ class FragmentDetailsNote : Fragment() {
         binding.iconeApagarDetalhes.setOnClickListener {
             deleteNote()
         }
-        binding.iconeEditarDetalhes.setOnClickListener {
-            goEditeNote()
-        }
         binding.iconeVoltarDetalhes.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -65,27 +62,5 @@ class FragmentDetailsNote : Fragment() {
         }
         findNavController().popBackStack()
     }
-
-    private fun goEditeNote() {
-        val direction = FragmentDetailsNoteDirections.goNoteDetailsForNoteEdite(argsNote?.note)
-        findNavController().navigate(direction)
-    }
-
-//    private fun setupMenu() {
-//        (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
-//            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-//                menuInflater.inflate(R.menu.menu_details_note, menu)
-//            }
-//
-//            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-//                when (menuItem.itemId) {
-//                    R.id.menu_detalhes_produto_altera -> goEditeNote()
-//                    R.id.menu_detalhes_produto_remove -> deleteNote()
-//                }
-//                return true
-//            }
-//        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-//    }
-
 
 }

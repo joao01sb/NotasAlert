@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "NotasUp"
+rootProject.name = "Tarefas"
 include ':app'

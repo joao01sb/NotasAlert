@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.joao01sb.tarefas.databinding.FragmentEditeNoteBinding
 import com.joao01sb.tarefas.domain.viewModel.TarefaViewModel
+import com.joao01sb.tarefas.domain.viewModel.TarefasViewModel
 import com.joao01sb.tarefas.extra.Util.formatDate
 import com.joao01sb.tarefas.model.Tarefa
 import com.joao01sb.tarefas.notification.*
@@ -34,8 +35,7 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
     TimePickerDialog.OnTimeSetListener {
 
     private lateinit var binding: FragmentEditeNoteBinding
-    private val args: FragmentEditeNoteArgs by navArgs()
-    private val tarefaViewModel: TarefaViewModel by viewModel { parametersOf(args.tarefa) }
+    private val tarefaViewModel: TarefasViewModel by viewModel()
     private val calendar = Calendar.getInstance()
     private lateinit var dataSelecionada: String
 
@@ -56,15 +56,10 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        isEditeOrNewNote()
-        binding.dataTarefa.setOnClickListener {
-            configurarData()
-        }
-        binding.salvaTarefaButtom.setOnClickListener {
-            saveNote()
-        }
-        binding.iconeVoltarEditar.setOnClickListener {
-            back()
+        binding.apply {
+            dataTarefa.setOnClickListener { configurarData() }
+            salvaTarefaButtom.setOnClickListener { saveNote() }
+            iconeVoltarEditar.setOnClickListener { back() }
         }
         createNotificationChannel()
     }
@@ -95,7 +90,7 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
                         Toast.LENGTH_LONG
                     ).show()
                 }
-                if (SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).parse(dataSelecionada).time - System.currentTimeMillis() > 0) {
+                if ((SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).parse(dataSelecionada)?.time ?: 0) - System.currentTimeMillis() > 0) {
                     scheduleNotification()
                 }
                 findNavController().popBackStack()
@@ -106,14 +101,6 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
                 "Informe uma data para a tarefa",
                 Toast.LENGTH_SHORT
             ).show()
-        }
-    }
-
-    private fun isEditeOrNewNote() {
-        args.tarefa?.let { note ->
-            binding.nomeDaTarefaValor.setText(note.titulo)
-            binding.descricaoDaTarefaValor.setText(note.conteudo)
-            binding.dataTarefa.text = note.data.formatDate()
         }
     }
 

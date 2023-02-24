@@ -10,5 +10,11 @@ class TarefasViewModel(
 
     suspend fun tarefaslista() : List<Tarefa>?  = repository.buscarTarefas()
 
-
+    suspend fun salvarTarefa(tarefa: Tarefa?) {
+        if (tarefa != null) {
+            repository.salvarTarefa(tarefa)
+            return
+        }
+        throw java.lang.Exception("Tarefa não selecionada")
+    }
 }

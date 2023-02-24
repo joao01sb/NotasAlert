@@ -48,13 +48,6 @@
         android:name="com.joao01sb.tarefas.ui.fragment.FragmentDetailsNote"
         android:label="Nota Detalhes"
         tools:layout="@layout/fragment_details_note">
-        <action
-            android:id="@+id/go_noteDetails_for_noteEdite"
-            app:destination="@id/fragmentEditeNote"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <argument
             android:name="note"
             app:argType="com.joao01sb.tarefas.model.Tarefa" />
