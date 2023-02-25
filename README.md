@@ -17,12 +17,16 @@
   </a>
 </p>
 
+<br/>
+
 <p align="center">
-  <img alt="Imagem da Tela Principal" title="Inicio" src="./print/telaInicial.jpg" width="200px">
 	
-  <img alt="Criar tarefa" title="Lista" src="./print/criar.jpg" width="200px">
+  <img alt="Imagem da Tela Principal" title="Inicio" src=https://github.com/joao01sb/Tarefas/blob/master/prints/telaInicial.jpg width="200px">
 	
-  <img alt=" Tela de Detalhes" title="Usuarios" src="./print/detalhes.jpg" width="200px">
+  <img alt="Criar tarefa" title="criar tarefa" src=https://github.com/joao01sb/Tarefas/blob/master/prints/criar.jpg width="200px">
+	
+  <img alt=" Tela de Detalhes" title="detalhes " src=https://github.com/joao01sb/Tarefas/blob/master/prints/detalhes.jpg width="200px">
+
 
 </p>
 
