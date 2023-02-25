@@ -17,6 +17,15 @@
   </a>
 </p>
 
+<p align="center">
+  <img alt="Imagem da Tela Principal" title="Inicio" src="./print/telaInicial.jpg" width="200px">
+	
+  <img alt="Criar tarefa" title="Lista" src="./print/criar.jpg" width="200px">
+	
+  <img alt=" Tela de Detalhes" title="Usuarios" src="./print/detalhes.jpg" width="200px">
+
+</p>
+
 Tabela de conteúdos
 =================
 <!--ts-->
@@ -36,9 +45,9 @@ fragments, Alarm e notification, Koin para injeção de dependencias e Room para
 ## 📰 Funcionalidades
 
 - [x] A Aplicação ira exibir:
-  - [x] Lista de Notas
-  - [x] botão para adicionar nova Nota
-  - [x] click para alterar Nota já existente
+  - [x] Lista de Tarefas
+  - [x] botão para adicionar nova Tarefa
+  - [x] click na Tarefa para detalhes
 
 - [x] Outros Recuros:
   - [X] Manipulação de Dados entre Activities
@@ -47,6 +56,7 @@ fragments, Alarm e notification, Koin para injeção de dependencias e Room para
   - [X] injeção de dependencia
   - [X] viewModels
   - [X] Corotinas
+  - [X] DataPicker
   
 
 ## 🚀 Como executar o projeto
