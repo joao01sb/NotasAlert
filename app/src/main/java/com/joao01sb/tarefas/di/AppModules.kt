@@ -23,6 +23,6 @@ val appDatabase = module {
     single<TarefaRepository> { TarefaRepository(get()) }
 
     viewModel { TarefasViewModel(get()) }
-    viewModel { (t: Tarefa) -> TarefaViewModel(t, get()) }
+    viewModel { (tarefa: Tarefa) -> TarefaViewModel(tarefa, get()) }
 
 }

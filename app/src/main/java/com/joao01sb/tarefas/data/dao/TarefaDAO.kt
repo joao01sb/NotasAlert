@@ -16,13 +16,4 @@ interface TarefaDAO {
     @Delete
      fun remove(tarefa: Tarefa)
 
-    @Query("SELECT * FROM Tarefa WHERE id = :id")
-    fun buscaPorId(id: Long): LiveData<Tarefa?>
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-     fun salva(tarefas: List<Tarefa>)
-
-    @Update()
-     fun editarTarefa(tarefa: Tarefa)
-
 }

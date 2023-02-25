@@ -1,4 +1,4 @@
-<h1 align="center" id="title">NotasUp</h1>
+<h1 align="center" id="title">Tarefas</h1>
 <h3 align="center">
    Aplicação Android onde e possivel criar uma Nota com notificação no horario escolhido
 </h3>
@@ -30,7 +30,7 @@ Tabela de conteúdos
 
 # 💻 Sobre o projeto
 
-**NotasUp** - Projeto desenvolvido para o Estudo da ferramentas do framework android, Gerenciamento de navegação entre
+**Tarefas** - Projeto desenvolvido para o Estudo da ferramentas do framework android, Gerenciamento de navegação entre
 fragments, Alarm e notification, Koin para injeção de dependencias e Room para manipular dados no Banco SQlite.
 
 ## 📰 Funcionalidades
@@ -72,10 +72,10 @@ Este Projeto é divido em 6 Principais Partes:
 ```bash
 
 # Clone este repositório
-$ git clone https://github.com/joao01sb/NotasUp.git
+$ git clone https://github.com/joao01sb/Tarefas.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd NotasUp
+$ cd Tarefas
 
 ```
 

@@ -53,12 +53,12 @@
             android:layout_marginTop="8dp"
             android:textSize="20sp"
             android:drawablePadding="4dp"
-            android:drawableLeft="@drawable/ic_time_valido"
             android:text="Data Da tarefa"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/descricao_tarefa" />
+            app:layout_constraintTop_toBottomOf="@id/descricao_tarefa"
+            app:drawableLeftCompat="@drawable/ic_time_edite" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

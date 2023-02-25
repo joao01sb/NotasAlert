@@ -9,14 +9,6 @@ class TarefaViewModel(
     private val repository: TarefaRepository
 ) : ViewModel() {
 
-    suspend fun salvarTarefa(tarefa: Tarefa?) {
-        if (tarefa != null) {
-            repository.salvarTarefa(tarefa)
-            return
-        }
-        throw java.lang.Exception("Tarefa não selecionada")
-    }
-
     suspend fun deletarTarefa(tarefa: Tarefa?) {
         if (tarefa != null) {
             repository.deletarTarefa(tarefa)

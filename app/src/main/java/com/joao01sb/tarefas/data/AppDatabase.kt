@@ -11,18 +11,4 @@ import com.joao01sb.tarefas.model.Tarefa
 abstract class AppDatabase : RoomDatabase() {
     abstract val tarefaDAO : TarefaDAO
 
-//    companion object {
-//        private lateinit var databaseIntancia: AppDatabase
-//        fun getInstance(context: Context): AppDatabase {
-//            if(::databaseIntancia.isInitialized) return databaseIntancia
-//            databaseIntancia = Room.databaseBuilder(
-//                context,
-//                AppDatabase::class.java,
-//                "tarefas.db"
-//            ).build()
-//            return databaseIntancia
-//        }
-//
-//    }
-
 }
