@@ -1,13 +1,13 @@
 package com.joao01sb.tarefas.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.joao01sb.tarefas.databinding.FragmentListNotesBinding
+import com.joao01sb.tarefas.databinding.FragmentListaTarefasBinding
 import com.joao01sb.tarefas.domain.viewModel.TarefasViewModel
 import com.joao01sb.tarefas.model.Tarefa
 import com.joao01sb.tarefas.ui.adapter.AdapterTarefas
@@ -16,9 +16,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FragmentListNotes : Fragment() {
+class ListaDeTarefasFragment : Fragment() {
 
-    private lateinit var binding: FragmentListNotesBinding
+    private lateinit var binding: FragmentListaTarefasBinding
     private val tarefasViewModel: TarefasViewModel by viewModel()
     private var adapter: AdapterTarefas? = null
     private val navController by lazy {
@@ -29,7 +29,7 @@ class FragmentListNotes : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentListNotesBinding.inflate(inflater, container, false)
+        binding = FragmentListaTarefasBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -37,7 +37,7 @@ class FragmentListNotes : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         configRecyclerView()
         binding.fab.setOnClickListener {
-            goEditeNote()
+            criarNovaTarefa()
         }
     }
 
@@ -47,8 +47,8 @@ class FragmentListNotes : Fragment() {
             if (!listNote.isNullOrEmpty()) {
                 withContext(Dispatchers.Main) {
                     binding.infoTarefasVazia.visibility = View.GONE
-                    this@FragmentListNotes.adapter = AdapterTarefas(listNote) { note ->
-                        goDetailsNote(note)
+                    this@ListaDeTarefasFragment.adapter = AdapterTarefas(listNote) { note ->
+                        vaiParaTarefaDetalhes(note)
                     }
                     binding.listaTarefas.adapter = adapter
                 }
@@ -61,13 +61,13 @@ class FragmentListNotes : Fragment() {
         }
     }
 
-    private fun goDetailsNote(tarefa: Tarefa) {
-        val direction = FragmentListNotesDirections.goNotesForNoteDetails(tarefa)
+    private fun vaiParaTarefaDetalhes(tarefa: Tarefa) {
+        val direction = ListaDeTarefasFragmentDirections.goNotesForNoteDetails(tarefa)
         navController.navigate(direction)
     }
 
-    private fun goEditeNote() {
-        val direction = FragmentListNotesDirections.goNotesForEditeNote()
+    private fun criarNovaTarefa() {
+        val direction = ListaDeTarefasFragmentDirections.goNotesForEditeNote()
         navController.navigate(direction)
     }
 

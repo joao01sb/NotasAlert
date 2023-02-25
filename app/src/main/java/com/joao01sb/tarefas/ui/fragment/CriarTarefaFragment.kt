@@ -14,32 +14,31 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.joao01sb.tarefas.databinding.FragmentEditeNoteBinding
-import com.joao01sb.tarefas.domain.viewModel.TarefaViewModel
+import com.joao01sb.tarefas.databinding.FragmentCriarTarefaBinding
 import com.joao01sb.tarefas.domain.viewModel.TarefasViewModel
 import com.joao01sb.tarefas.extra.Util.formatDate
 import com.joao01sb.tarefas.model.Tarefa
-import com.joao01sb.tarefas.notification.*
 import com.joao01sb.tarefas.notification.Notification
 import com.joao01sb.tarefas.notification.Notification.Companion.notificationID
+import com.joao01sb.tarefas.notification.channelID
+import com.joao01sb.tarefas.notification.messageExtra
+import com.joao01sb.tarefas.notification.titleExtra
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
+class CriarTarefaFragment : Fragment(), DatePickerDialog.OnDateSetListener,
     TimePickerDialog.OnTimeSetListener {
 
-    private lateinit var binding: FragmentEditeNoteBinding
+    private lateinit var binding: FragmentCriarTarefaBinding
     private val tarefaViewModel: TarefasViewModel by viewModel()
     private val calendar = Calendar.getInstance()
     private lateinit var dataSelecionada: String
 
-    private var daySelecionado = 0
+    private var diaSelecionado = 0
     private var mesSelecionado = 0
     private var anoSelecionado = 0
     private var horaSelecionada = 0
@@ -50,7 +49,7 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentEditeNoteBinding.inflate(inflater, container, false)
+        binding = FragmentCriarTarefaBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -116,7 +115,7 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
         calendar.set(Calendar.DAY_OF_MONTH, p3)
         calendar.set(Calendar.MONTH, p2)
         calendar.set(Calendar.YEAR, p1)
-        daySelecionado = p3
+        diaSelecionado = p3
         mesSelecionado = p2
         anoSelecionado = p1
 
@@ -132,7 +131,11 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
         minutoSelecionado = p2
 
         dataSelecionada = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(calendar.time)
-        binding.dataTarefa.text = dataSelecionada.formatDate()
+        if((SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).parse(dataSelecionada)?.time ?: 0) -  System.currentTimeMillis() > 0)
+            binding.dataTarefa.text = dataSelecionada.formatDate()
+        else
+            Toast.makeText(requireContext(), "Somente possivel selecionar datas futuras", Toast.LENGTH_SHORT).show()
+
     }
 
     private fun scheduleNotification()
@@ -181,7 +184,7 @@ class FragmentEditeNote : Fragment(), DatePickerDialog.OnDateSetListener,
     }
 
     private fun getTime(): Long {
-        calendar.set(anoSelecionado, mesSelecionado, daySelecionado, horaSelecionada, minutoSelecionado)
+        calendar.set(anoSelecionado, mesSelecionado, diaSelecionado, horaSelecionada, minutoSelecionado)
         return calendar.timeInMillis
     }
 

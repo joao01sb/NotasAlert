@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragment.FragmentListNotes">
+    tools:context=".ui.fragment.ListaDeTarefasFragment">
 
     <TextView
         android:id="@+id/titulo_tarefas"
@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titulo_tarefas"
-        tools:listitem="@layout/task_item" />
+        tools:listitem="@layout/tarefa_item" />
 
     <TextView
         android:id="@+id/info_tarefasVazia"

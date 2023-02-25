@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/fragmentListNotes"
-        android:name="com.joao01sb.tarefas.ui.fragment.FragmentListNotes"
+        android:name="com.joao01sb.tarefas.ui.fragment.ListaDeTarefasFragment"
         android:label="Lista de Notas"
-        tools:layout="@layout/fragment_list_notes" >
+        tools:layout="@layout/fragment_lista_tarefas" >
         <action
             android:id="@+id/go_notes_for_noteDetails"
             app:destination="@id/fragmentDetailsNote"
@@ -27,9 +27,9 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentEditeNote"
-        android:name="com.joao01sb.tarefas.ui.fragment.FragmentEditeNote"
+        android:name="com.joao01sb.tarefas.ui.fragment.CriarTarefaFragment"
         android:label="Editar Nota"
-        tools:layout="@layout/fragment_edite_note" >
+        tools:layout="@layout/fragment_criar_tarefa" >
         <argument
             android:name="tarefa"
             app:argType="com.joao01sb.tarefas.model.Tarefa"
@@ -45,9 +45,9 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentDetailsNote"
-        android:name="com.joao01sb.tarefas.ui.fragment.FragmentDetailsNote"
+        android:name="com.joao01sb.tarefas.ui.fragment.DetalhesTarefaFragment"
         android:label="Nota Detalhes"
-        tools:layout="@layout/fragment_details_note">
+        tools:layout="@layout/fragment_detalhes_tarefa">
         <argument
             android:name="note"
             app:argType="com.joao01sb.tarefas.model.Tarefa" />

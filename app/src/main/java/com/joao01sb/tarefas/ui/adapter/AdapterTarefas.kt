@@ -4,12 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.joao01sb.tarefas.R
-import com.joao01sb.tarefas.databinding.TaskItemBinding
+import com.joao01sb.tarefas.databinding.TarefaItemBinding
 import com.joao01sb.tarefas.extra.Util.formatDate
 import com.joao01sb.tarefas.model.Tarefa
-import java.text.SimpleDateFormat
-import java.util.*
 
 class AdapterTarefas(
     private val tarefas: List<Tarefa> = emptyList(),
@@ -17,7 +14,7 @@ class AdapterTarefas(
 ) : RecyclerView.Adapter<AdapterTarefas.ViewHolder>() {
 
     inner class ViewHolder(
-        private val binding: TaskItemBinding
+        private val binding: TarefaItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun vincularPersonagemComDados(tarefa: Tarefa) {
@@ -27,7 +24,6 @@ class AdapterTarefas(
             if (binding.descricaoTarefa.text.isBlank())
                 binding.descricaoTarefa.visibility = View.GONE
 
-//            verificaDataDaTarefa(tarefa.data)
             binding.dataVencimentoDaTarefa.text = tarefa.data.formatDate()
 
             binding.root.setOnClickListener {
@@ -35,19 +31,10 @@ class AdapterTarefas(
             }
         }
 
-//        private fun verificaDataDaTarefa(tarefaData: String) {
-//            val data =
-//                SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).parse(tarefaData)
-//            if (data.time - System.currentTimeMillis() > 0)
-////                binding.iconeVencimento.setImageResource(R.drawable.ic_time_valido)
-//                binding.dataVencimentoDaTarefa.
-//            else
-//                binding.iconeVencimento.setImageResource(R.drawable.ic_time_vencido)
-//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(TaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        ViewHolder(TarefaItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         tarefas[position].let { holder.vincularPersonagemComDados(it) }

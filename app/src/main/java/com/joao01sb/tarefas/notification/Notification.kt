@@ -36,7 +36,7 @@ class Notification : BroadcastReceiver() {
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle(intent.getStringExtra(titleExtra))
             .setContentText(intent.getStringExtra(messageExtra))
-            .setSmallIcon(R.drawable.icon_notification)
+            .setSmallIcon(R.drawable.icon_time)
             .setContentIntent(resultPendingIntent)
             .setStyle(
                 NotificationCompat.BigTextStyle()
