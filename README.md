@@ -1,4 +1,4 @@
-<h1 align="center" id="title">NotasUp</h1>
+<h1 align="center" id="title">Tarefas</h1>
 <h3 align="center">
    Aplicação Android onde e possivel criar uma Nota com notificação no horario escolhido
 </h3>
